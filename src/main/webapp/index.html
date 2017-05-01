@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html ng-app="">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="http://cdn.bootcss.com/angular.js/1.6.4/angular-animate.js"></script>
+<title>AngularJSTest</title>
+</head>
+<body ng-controller="MyController">
+    <p>User</p>
+    <p>ID</p>
+    <input id="id" name="id" ng-model="saveUser.id">
+    <br>
+    <p>Name</p>
+    <input id="id" name="name" ng-model="saveUser.name">
+    <br>
+    <p>age</p>
+    <input id="id" name="age" ng-model="saveUser.age">
+    <br>
+    <button ng-click="getUser()">提交</button>
+    <script>
+        function MyController($scope, $http){
+            $scope.saveUser = {
+                id:1,
+                name:"John",
+                age:"16"
+            };
+
+            $scope.getUser = function(){
+                $http({
+                    method: "POST",
+                    url: "http://localhost:8080/angularjs-springmvc/AngularJS/getUser.do",
+                    data: $scope.saveUser
+                }).success(function (data, status){
+                    // handle success
+                })
+            };
+        }
+    </script>
+</body>
+</html>
