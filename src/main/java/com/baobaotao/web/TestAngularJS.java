@@ -2,6 +2,9 @@ package com.baobaotao.web;
 
 import com.baobaoto.domain.AngularUser;
 
+import java.io.IOException;
+
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +37,23 @@ public class TestAngularJS {
         System.out.println("ID" + angularUser.getId());
         System.out.println("name" + angularUser.getName());
         System.out.println("age" + angularUser.getAge());
-        return "{\"id\": 3, \"name\": \"Tom\", \"age\": \"28\"}";
+        
+        AngularUser rt = new AngularUser();
+        rt.setId(2L);
+        rt.setName("Jack");
+        rt.setAge("38");
+        
+        ObjectMapper mapper = new ObjectMapper();
+
+        String jsonInString = "{\"id\": 3, \"name\": \"Tom\", \"age\": \"28\"}";
+        
+        try {
+			jsonInString = mapper.writeValueAsString(rt);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+        return jsonInString; //"{\"id\": 3, \"name\": \"Tom\", \"age\": \"28\"}";
     }
 }

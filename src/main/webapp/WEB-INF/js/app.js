@@ -20,9 +20,11 @@ app.controller('MyController', function($scope, $http) {
             data: $scope.saveUser
         }).success(function(data, status) {
             console.log(data.id);
+//            $scope.id = data.id;
             $scope.saverUser = data;
-            $scope.saverUser.name = data.name;
-            $scope.saverUser.age = data.age;
+//            $scope.saverUser.id = data.id;
+//            $scope.saverUser.name = data.name;
+//            $scope.saverUser.age = data.age;
             
         }).error(function(data, status) {
             console.log("fail");

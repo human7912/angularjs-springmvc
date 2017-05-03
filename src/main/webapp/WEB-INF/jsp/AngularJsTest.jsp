@@ -10,13 +10,13 @@
 </head>
 <body ng-controller="MyController">
     <p>User</p>
-    <p>ID</p>
+    <p>ID : {{saverUser.id}}</p>
     <input id="id" name="id" ng-model="saveUser.id">
     <br>
-    <p>Name</p>
+    <p>Name : {{saverUser.name}}</p>
     <input id="id" name="name" ng-model="saveUser.name">
     <br>
-    <p>age</p>
+    <p>age : {{saverUser.age}}</p>
     <input id="id" name="age" ng-model="saveUser.age">
     <br>
     <button ng-click="getUser()">Submit</button>
